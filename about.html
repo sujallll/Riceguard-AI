@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - RiceGuard AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(90deg, #0095FF 0%, #00D7FF 100%);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            color: white !important;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: white !important;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #00a6fb, #0582ca);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* About page specific styles */
+        .hero-section {
+            background: linear-gradient(135deg, #0095FF, #00D7FF);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #00a6fb;
+        }
+
+        .tech-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            margin: 3rem 0;
+        }
+
+        .tech-wave {
+            position: relative;
+            background: linear-gradient(45deg, #f8f9fa 30%, #e9ecef 100%);
+            overflow: hidden;
+        }
+
+        .tech-wave::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #fff;
+            border-radius: 100%;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00a6fb;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .tech-card img {
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .tech-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .tech-image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 149, 255, 0.1), rgba(0, 215, 255, 0.1));
+            pointer-events: none;
+        }
+
+        .tech-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .tech-features {
+            margin-top: 20px;
+        }
+
+        .tech-feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .tech-feature-item:hover {
+            background: linear-gradient(45deg, #00ff87 0%, #60efff 100%);
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .tech-feature-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: #00a6fb;
+        }
+
+        .tech-feature-item:hover .tech-feature-icon {
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-leaf"></i> RiceGuard AI
+        </div>
+        <div class="nav-links">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/about" class="active"><i class="fas fa-info-circle"></i> About</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="hero-container">
+                <h1 class="display-4 mb-4 hero-title">Empowering Agriculture with AI</h1>
+                <p class="lead">Protecting rice crops through advanced disease detection technology</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Mission Section -->
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Our Mission</h2>
+            <p class="lead">To revolutionize crop disease detection and empower farmers with cutting-edge AI technology, ensuring food security and agricultural sustainability.</p>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>High Accuracy</h3>
+                    <p>Our AI model achieves over 95% accuracy in detecting rice plant diseases, ensuring reliable results for farmers.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Analysis</h3>
+                    <p>Get disease detection results within seconds, enabling quick decision-making and timely interventions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>User-Friendly</h3>
+                    <p>Simple and intuitive interface - just upload a photo of your rice plant leaf to get started.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="tech-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Impact</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="stat-number">95%+</div>
+                            <h4>Accuracy Rate</h4>
+                            <p>In disease detection</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="stat-number">9</div>
+                            <h4>Disease Types</h4>
+                            <p>Detected and analyzed</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="stat-number">&lt;2s</div>
+                            <h4>Processing Time</h4>
+                            <p>Per image analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Section -->
+        <div class="mb-5">
+            <h2 class="text-center mb-4">Our Technology</h2>
+            <div class="row align-items-center tech-card">
+                <div class="col-md-6">
+                    <div class="tech-image-container">
+                        <img src="static/image/ai.jpg" class="img-fluid rounded shadow" alt="AI Technology">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mb-3">Advanced AI Model</h3>
+                    <p>Our system uses state-of-the-art deep learning technology to analyze rice plant images and detect diseases with high accuracy. The model has been trained on thousands of images to ensure reliable results.</p>
+                    <ul class="list-unstyled tech-features">
+                        <li class="tech-feature-item">
+                            <i class="fas fa-brain tech-feature-icon"></i>
+                            Deep Learning Architecture
+                        </li>
+                        <li class="tech-feature-item">
+                            <i class="fas fa-sync-alt tech-feature-icon"></i>
+                            Continuous Model Updates
+                        </li>
+                        <li class="tech-feature-item">
+                            <i class="fas fa-bolt tech-feature-icon"></i>
+                            Real-time Processing
+                        </li>
+                        <li class="tech-feature-item">
+                            <i class="fas fa-search-plus tech-feature-icon"></i>
+                            Multi-disease Detection
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>About RiceGuard AI</h5>
+                    <p>Advanced AI-powered solution for detecting and diagnosing rice plant diseases.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Contact</h5>
+                    <p>Email: info@riceguard.ai</p>
+                    <p>Support: support@riceguard.ai</p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>&copy; 2024 RiceGuard AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

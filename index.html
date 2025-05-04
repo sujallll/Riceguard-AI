@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Leaf Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(90deg, #0095FF 0%, #00D7FF 100%);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .header {
+            margin-top: 40px;
+        }
+        
+        .nav-brand {
+            color: white !important;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: white !important;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #00a6fb, #0582ca);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-leaf"></i> RiceGuard AI
+        </div>
+        <div class="nav-links">
+            <a href="/" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <div class="small-text">AI-Powered Disease Detection</div>
+            <h1>Detect Plant Diseases Instantly</h1>
+            <p class="subtitle">Upload a rice leaf image and our advanced AI system will analyze it for potential diseases with high accuracy.</p>
+        </div>
+
+        <div class="upload-container" id="dropZone">
+            <div class="upload-content">
+                <div class="upload-icon">🌿</div>
+                <div class="drag-text">Drag and drop your rice leaf image here</div>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                <button class="select-button" onclick="document.getElementById('imageInput').click()">
+                    Select Image
+                </button>
+                <div class="file-info">Supports: JPG, JPEG, PNG</div>
+            </div>
+            
+            <div class="preview-container" id="previewContainer" style="display: none;">
+                <img id="imagePreview" src="#" alt="Preview">
+                <button class="select-button" onclick="resetUpload()">Change Image</button>
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Analyzing leaf pattern...</p>
+            </div>
+        </div>
+
+        <div class="result-section" id="resultSection" style="display: none;">
+            <h2>Analysis Results</h2>
+            <div id="predictionResult"></div>
+            
+            <div class="precautions">
+                <h3>Recommended Precautions & Treatment</h3>
+                <div id="precautionsContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>About RiceGuard AI</h5>
+                    <p>Advanced AI-powered solution for detecting and diagnosing rice plant diseases.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Contact</h5>
+                    <p>Email: info@riceguard.ai</p>
+                    <p>Support: support@riceguard.ai</p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>&copy; 2024 RiceGuard AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
