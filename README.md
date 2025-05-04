@@ -3,6 +3,7 @@
 RiceGuard AI is a web-based rice leaf disease detection system. Built using simple HTML, CSS, and a Python-powered machine learning backend, this tool allows users to upload an image of a rice leaf and receive an instant diagnosis along with recommended precautionary measures.
 
 ✅ Features
+
 📷 Upload rice leaf images for disease detection
 
 🧠 Backend-powered ML model (e.g., using TensorFlow/Keras)
@@ -20,9 +21,7 @@ Backend	Python (Flask / FastAPI)
 ML Framework	TensorFlow / Keras
 
 📂 Project Structure
-php
-Copy
-Edit
+
 Rice-Leaf/
 ├── index.html              # Main webpage
 ├── style.css               # Styling for the frontend
@@ -30,6 +29,7 @@ Rice-Leaf/
 ├── model/                  # Trained model (.h5 or similar)
 ├── static/                 # Static assets (images, CSS if any)
 └── README.md               # Project documentation
+
 🚀 Getting Started
 📦 Prerequisites
 Python 3.9+
@@ -39,22 +39,15 @@ Required packages in requirements.txt (Flask, TensorFlow, etc.)
 🔧 Setup Instructions
 Clone or extract the project:
 
-bash
-Copy
-Edit
+
 unzip Rice-Leaf.zip
 cd Rice-Leaf
 Install Python dependencies:
 
-bash
-Copy
-Edit
+
 pip install -r requirements.txt
 Run the backend server:
 
-bash
-Copy
-Edit
 python app.py
 Open index.html in your browser, or host it using Flask static routing.
 
@@ -78,6 +71,7 @@ Apply copper-based bactericides
 Use resistant seed varieties
 
 📬 Contact
+
 Sujal Gaikwad
 sujalgaikwad0210@gmail.com
 
