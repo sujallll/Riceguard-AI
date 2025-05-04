@@ -30,6 +30,8 @@ Rice-Leaf/
 ├── static/                 # Static assets (images, CSS if any)
 └── README.md               # Project documentation
 
+
+
 🚀 Getting Started
 📦 Prerequisites
 Python 3.9+
